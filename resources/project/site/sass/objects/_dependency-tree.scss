@@ -1,0 +1,104 @@
+.dependency-tree {
+    $self: &;
+
+    background-color: get-color("boxes", "background-dark");
+    border: 3px solid get-color("boxes", "background");
+    padding: $hsu;
+
+    @include media-query(2) {
+        padding: $bsu;
+    }
+
+    &__status {
+        display: flex;
+        color: get-color("base", "inverted-text");
+        font-size: 0.875rem;
+        padding: $hsu;
+
+        @include media-query(2) {
+            font-size: $type__base-font-size;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .folding-cube {
+            margin-right: $hsu;
+        }
+
+        span {
+            line-height: 1.9;
+        }
+    }
+
+    &__items {
+        display: block;
+        margin: 0;
+        padding: 0 0 0 $bsu;
+        position: relative;
+        list-style: none;
+
+        &:before {
+            background-color: get-color("borders", "tree");
+            content: "";
+            display: block;
+            height: calc(100% + 8px);
+            left: $hsu;
+            position: absolute;
+            top: -26px;
+            width: 2px;
+        }
+
+        &:first-child {
+            padding-left: 0;
+
+            &:before {
+                display: none;
+            }
+        }
+
+        &:first-child > #{$self}__item:first-child > #{$self}__package {
+            background-color: get-color("brand", "mustard-light");
+            font-weight: get-font-weight("primary", "bold");
+
+            &:before {
+                display: none;
+            }
+        }
+
+        &--last {
+
+            &:before {
+                top: calc(-100% + 12px);
+            }
+        }
+    }
+    &__item {
+        padding: 0;
+    }
+    &__package {
+        background-color: get-color("base", "background");
+        border-radius: 3px;
+        font-size: 0.875rem;
+        margin: $hsu * 0.5 0;
+        padding: $hsu * 0.5 $hsu;
+        position: relative;
+        z-index: 2;
+
+        @include media-query(2) {
+            font-size: $type__base-font-size;
+        }
+
+        &:before {
+            background-color: get-color("borders", "tree");
+            content: "";
+            display: block;
+            height: 2px;
+            left: -$hsu;
+            margin-top: -1px;
+            position: absolute;
+            top: 50%;
+            width: $hsu;
+            z-index: 1;
+        }
+    }
+}

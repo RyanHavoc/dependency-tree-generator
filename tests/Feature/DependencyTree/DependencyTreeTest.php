@@ -2,12 +2,14 @@
 
 namespace Tests\Feature;
 
-use App\DependencyTree\DependencyTree;
+use App\Services\DependencyTree;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class DependencyTreeTest extends TestCase
 {
+
+
     /** @test */
     public function it_removes_superfluous_comparisons_from_start_of_version_string()
     {

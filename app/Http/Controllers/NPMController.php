@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\DependencyTree\DependencyTree;
+use App\Services\DependencyTree;
 
 class NPMController extends Controller
 {
@@ -12,7 +12,7 @@ class NPMController extends Controller
         $this->dependencyTree = $dependencyTree;
     }
 
-    public function getPackage($name, $version = 'latest')
+    public function getPackage($name, $version = null)
     {
         return $this->dependencyTree->getPackage($name, $version);
     }

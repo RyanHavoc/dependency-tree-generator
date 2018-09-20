@@ -1,0 +1,31 @@
+/*------------------------------------*\
+  #MEDIA QUERY MIXIN
+\*------------------------------------*/
+
+/**
+ * DEFAULT VARIABLES
+ */
+$bp-widths: 30rem, 48rem, 60rem, 80rem !default;
+
+
+/**
+ * MIXIN
+ *
+ * Example usage:
+ * @include media-query(3) {
+ *     color: #C00;
+ * }
+ * 
+ * @include media-query(10em) {
+ *     color: #0C0; 
+ * }
+ */
+@mixin media-query($bp) {    
+    @if unitless($bp) {
+        @media only screen and (min-width: nth($bp-widths, $bp)) { @content; }
+    }
+
+    @else {
+        @media only screen and (min-width: $bp) { @content; }
+    }
+}

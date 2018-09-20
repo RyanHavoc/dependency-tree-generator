@@ -1,0 +1,11 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/NoDivide/narum-gulp.git
+	branch = master
+	commit = 683168023a5a02ad43c8d4b87a97ffe8de7afe05
+	parent = b25687121bcc69e5085bb1f01027791c0bec7e33
+	cmdver = 0.3.1

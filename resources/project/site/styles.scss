@@ -1,0 +1,21 @@
+/*------------------------------------*\
+  #IMPORTS
+\*------------------------------------*/
+
+// Import project settings
+@import "project";
+
+// Utilities
+@import "sass/utilities/*.scss";
+
+// Generic 
+@import "sass/generic/*.scss";
+
+// Objects
+@import "sass/objects/*.scss";
+
+// Modules
+@import "sass/modules/*.scss";
+
+// Layout 
+@import "sass/layout/*.scss";

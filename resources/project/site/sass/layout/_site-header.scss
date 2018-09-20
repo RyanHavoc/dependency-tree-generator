@@ -1,0 +1,22 @@
+.site-header {
+    margin: $bsu * 2 auto $bsu;
+    padding: 0 $bsu;
+    text-align: center;
+
+    @include media-query(2) {
+        margin: $bsu * 4 auto $bsu;
+        padding: 0;
+    }
+
+    &__title {
+        color: rgba(get-color("base", "text"), 1);
+        font-size: 24px;
+        letter-spacing: -2px;
+        text-shadow: 0 1px 1px rgba(#FFF, 0.2);
+        text-transform: uppercase;
+
+        @include media-query(2) {
+            font-size: 48px;
+        }
+    }
+}

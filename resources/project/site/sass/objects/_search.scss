@@ -1,0 +1,34 @@
+.search {
+    background-color: get-color("boxes", "background");
+    border-radius: 12px;
+    box-shadow: 0 6px 60px 0 rgba(0,0,0,0.6);
+
+    &__header {
+        padding: $bsu $hsu * .5 $hsu;
+
+        @include media-query(2) {
+            padding: $bsu * 1.5 $hsu $bsu;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: $hsu;
+
+        @include media-query(2) {
+            flex-wrap: nowrap;
+            justify-content: space-between;
+        }
+        
+        > * {
+            margin: 0 $hsu;
+        }
+    }
+
+    &__examples {
+        color: get-color("base", "dimmed");
+        font-size: 0.875rem;
+        padding: 0 $hsu;
+    }
+}

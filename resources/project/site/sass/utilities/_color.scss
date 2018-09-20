@@ -1,0 +1,22 @@
+/*------------------------------------*\
+  #COLOR FUNCTIONS
+\*------------------------------------*/
+
+/**
+ * COLORS
+ */
+$colors: (
+    "base": (
+            "background": #ffffff,
+            "text": #000000
+    )
+) !default;
+
+/**
+ * GET COLOR: Get a color from the global settings
+ * 
+ * EXAMPLE: background: get-color("base", "background");
+ */
+@function get-color($group, $color) {
+    @return map-get(map-get($colors, $group), $color);
+}

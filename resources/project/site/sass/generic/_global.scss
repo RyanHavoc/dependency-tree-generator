@@ -1,0 +1,49 @@
+/*------------------------------------*\
+  #GLOBAL STYLES
+\*------------------------------------*/
+* {
+    box-sizing: border-box;
+}
+
+[v-if] { display: none; }
+
+html {
+    background: get-color("brand", "teal-dark");
+    background: radial-gradient(ellipse at center, get-color("brand", "teal-mid") 0%, get-color("brand", "teal-dark") 100%);;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+body,
+input,
+textarea,
+select {
+    font-family: get-font-family("primary");
+    font-weight: get-font-weight("primary", "regular");
+    color: get-color("base", "text");
+}
+body {
+    font-size: $type__base-font-size;
+    line-height: $type__base-line-height;
+    min-height: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+::placeholder {
+    color: get-color("base", "dimmed");
+}
+
+a {
+    color: get-color("brand", "teal-mid");
+    cursor: pointer;
+
+    &:hover {
+        color: get-color("brand", "teal-dark");
+        text-decoration: underline;
+    }
+}

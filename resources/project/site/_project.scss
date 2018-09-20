@@ -1,0 +1,76 @@
+/*------------------------------------*\
+  #METRICS
+\*------------------------------------*/
+
+// Spacing units
+$metric__base-space-unit: 32px;
+$metric__base-space-unit--maxi: 48px;
+$metric__base-space-unit--mini: 16px;
+
+// Border radius
+$metric__border-radius: 6px;
+$metric__border-radius--maxi: 12px;
+$metric__border-radius--mini: 3px;
+
+// Aliases
+$bsu: $metric__base-space-unit;
+$hsu: $metric__base-space-unit--mini;
+
+
+/*------------------------------------*\
+  #MEDIA QUERY BREAKPOINTS
+\*------------------------------------*/
+$breakpoint__widths: 30rem, 48rem, 60rem, 80rem;
+
+
+/*------------------------------------*\
+  #TYPOGRAPHY
+\*------------------------------------*/
+
+// Type sizes
+$type__base-font-size: 1rem;
+$type__base-line-height: 1.4;
+
+// Font families
+$type__font-families: (
+    "primary": "'Open Sans', sans-serif"
+);
+
+// Font weights
+$type__font-weights: (
+    "primary": (
+        "regular" : 400,
+        "bold"    : 700
+    )
+);
+
+
+/*------------------------------------*\
+  #COLORS
+\*------------------------------------*/
+$colors: (
+    base: (
+        background: #ffffff,
+        text: #2a3644,
+        inverted-text: #ffffff,
+        dimmed: rgba(#2a3644, 0.5)
+    ),
+    boxes: (
+        background: #eff1f3,
+        background-dark: #2a3644
+    ),
+    brand: (
+        teal-dark: #0c474f,
+        teal-mid: #205e67,
+        mustard-light: #FFDF58
+    ),
+    borders: (
+        standard: rgba(#2a3644, 0.6),
+        mid: rgba(#2a3644, 0.4),
+        light: rgba(#2a3644, 0.2),
+        inverted-standard: rgba(#ffffff, 0.6),
+        inverted-mid: rgba(#ffffff, 0.4),
+        inverted-light: rgba(#ffffff, 0.2),
+        tree: #555E69
+    )
+);

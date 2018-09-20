@@ -1,0 +1,21 @@
+/*------------------------------------*\
+  #TYPE FUNCTIONS
+\*------------------------------------*/
+
+/**
+ * GET FONT FAMILY: A wrapper to get a font family from $type__font-families
+ * 
+ * EXAMPLE: get-font-family("primary")
+ */
+@function get-font-family($key) {
+    @return #{ map-get($type__font-families, $key) };
+}
+
+/**
+ * GET FONT WEIGHT: A wrapper to get a font-weight for a specific family with a handy alias
+ * 
+ * EXAMPLE: get-font-weight("font-family-name", "bold")
+ */
+@function get-font-weight($family, $weight) {
+    @return #{ map-get(map-get($type__font-weights, $family), $weight) };
+}

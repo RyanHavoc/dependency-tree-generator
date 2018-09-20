@@ -1,0 +1,20 @@
+.search {
+    margin: 0 $bsu;
+
+    @include media-query(3) {
+        margin: 0 auto;
+        max-width: 60%;
+    }
+
+    .select {
+        margin-top: $hsu;
+
+        @include media-query(2) {
+            margin-top: 0;
+        }
+    }
+
+    .dependency-tree {
+        border-radius: 0 0 12px 12px;
+    }
+}

@@ -1,0 +1,14 @@
+/.env
+/.idea
+/vendor
+.DS_Store
+
+composer.phar
+composer.lock
+
+node_modules
+.sass-cache
+.vagrant
+*.swp
+.key
+package-lock.json
