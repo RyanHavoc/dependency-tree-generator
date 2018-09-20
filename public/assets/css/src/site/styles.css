@@ -394,7 +394,8 @@ a {
     font-size: 24px;
     letter-spacing: -2px;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    white-space: nowrap; }
     @media only screen and (min-width: 48rem) {
       .site-header__title {
         font-size: 48px; } }
