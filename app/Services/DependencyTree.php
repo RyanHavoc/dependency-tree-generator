@@ -10,6 +10,13 @@ use vierbergenlars\SemVer\version;    // <= Argh! Inconsistent naming convention
 
 class DependencyTree
 {
+    /**
+     * Get packaged determined by parameters.
+     *
+     * @param $name
+     * @param null $version
+     * @return array|mixed|null
+     */
     public function getPackage($name, $version = null)
     {
         // If version is null fetch the package.
@@ -22,6 +29,14 @@ class DependencyTree
         return $this->fetchPackageVersion($name, $version);
     }
 
+    /**
+     * Fetch specific package version from npm registry.
+     *
+     * @param $name
+     * @param string $version
+     * @return array|mixed|null
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function fetchPackageVersion($name, $version = 'latest')
     {
         $version = $this->parseVersion($name, $version);
@@ -48,6 +63,13 @@ class DependencyTree
         }
     }
 
+    /**
+     * Fetch package from npm registry.
+     *
+     * @param $name
+     * @return array|mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function fetchPackage($name)
     {
         try {
@@ -65,12 +87,27 @@ class DependencyTree
         }
     }
 
+    /**
+     * Fetch the latest package version from npm registry.
+     *
+     * @param $name
+     * @return array|mixed|null
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function fetchLatestPackageVersion($name)
     {
         $package = $this->fetchPackage($name);
         return $this->fetchPackageVersion($name, $package['dist-tags']['latest']);
     }
 
+    /**
+     * Generate dependency tree for package.
+     *
+     * @param $name
+     * @param string $version
+     * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function getDependencyTree($name, $version = 'latest')
     {
         if ($version === 'latest') {
@@ -99,6 +136,14 @@ class DependencyTree
         return $tree;
     }
 
+    /**
+     * Parse version number for processing.
+     *
+     * @param $name
+     * @param $version
+     * @return bool|int|string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function parseVersion($name, $version) {
 
         // Strip ~, ^ and = from start of string.
@@ -124,6 +169,12 @@ class DependencyTree
         return $version;
     }
 
+    /**
+     * Cache package.
+     *
+     * @param $package
+     * @return mixed
+     */
     public function cachePackage($package)
     {
         $data = json_decode($package, true);
@@ -136,6 +187,13 @@ class DependencyTree
             ]);
     }
 
+    /**
+     * Get cached package.
+     *
+     * @param $name
+     * @param $version
+     * @return mixed
+     */
     public function getCachedPackage($name, $version)
     {
         return Package::where('name', $name)
@@ -143,6 +201,13 @@ class DependencyTree
             ->first();
     }
 
+    /**
+     * Get package date from cached package.
+     *
+     * @param $name
+     * @param $version
+     * @return mixed|null
+     */
     public function getCachedPackageData($name, $version)
     {
         $cachedPackage = $this->getCachedPackage($name, $version);
