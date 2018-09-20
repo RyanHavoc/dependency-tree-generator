@@ -126,6 +126,10 @@ a {
   color: rgba(255, 255, 255, 0.3);
   font-size: 0.750rem;
   text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.2); }
+  .copyright a {
+    color: rgba(255, 255, 255, 0.5); }
+    .copyright a:hover {
+      color: rgba(255, 255, 255, 0.75); }
 
 .folding-cube {
   width: 30px;

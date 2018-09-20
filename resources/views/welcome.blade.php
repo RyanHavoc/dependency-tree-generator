@@ -53,7 +53,7 @@
                 </div>
             </div>
             <footer class="site-footer">
-                <p class="copyright">This service was created by Ryan Taylor in 2018 as an exercise and experiment with the NPM registry to construct a package dependency tree.</p>
+                <p class="copyright">This service was created by <a href="mailto:ryan@nodividestudio.com">Ryan Taylor</a> in 2018 as an exercise and experiment with the NPM registry to construct a package dependency tree.</p>
             </footer>
         </div>
 
