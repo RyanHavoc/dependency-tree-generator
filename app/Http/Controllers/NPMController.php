@@ -12,6 +12,11 @@ class NPMController extends Controller
         $this->dependencyTree = $dependencyTree;
     }
 
+    public function fetchPackage($name)
+    {
+        return $this->dependencyTree->fetchPackage($name);
+    }
+
     public function getPackage($name, $version = null)
     {
         return $this->dependencyTree->getPackage($name, $version);

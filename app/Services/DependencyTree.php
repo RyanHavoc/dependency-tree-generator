@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Package;
 use Exception;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Redis;
 use vierbergenlars\SemVer\expression; // <= Argh! Inconsistent naming convention.
 use vierbergenlars\SemVer\version;    // <= Argh! Inconsistent naming convention.
 
@@ -72,9 +73,15 @@ class DependencyTree
      */
     public function fetchPackage($name)
     {
+        if ($package = Redis::get("package.{$name}")) {
+            return json_decode($package, true);
+        }
+
         try {
             $client = new Client();
             $response = $client->request('GET', "https://registry.npmjs.org/{$name}");
+
+            Redis::setex("package.{$name}", 900, $response->getBody());
 
             return json_decode($response->getBody(), true);
         } catch(Exception $e) {
@@ -179,12 +186,19 @@ class DependencyTree
     {
         $data = json_decode($package, true);
 
-        return $this->getCachedPackage($data['name'], $data['version']) ?:
-            Package::create([
+        if ($cachedPackage = $this->getCachedPackage($data['name'], $data['version'])) {
+            return $cachedPackage;
+        } else {
+            $cachedPackage = Package::create([
                 'name' => $data['name'],
                 'version' => $data['version'],
                 'data' => $package
             ]);
+
+            Redis::set("package.{$cachedPackage->name}.{$cachedPackage->version}", $cachedPackage);
+
+            return $cachedPackage;
+        }
     }
 
     /**
@@ -196,9 +210,17 @@ class DependencyTree
      */
     public function getCachedPackage($name, $version)
     {
-        return Package::where('name', $name)
+        if (Redis::exists("package.{$name}.{$version}")) {
+            return json_decode(Redis::get("package.{$name}.{$version}"));
+        }
+
+        if ($cachedPackage = Package::where('name', $name)
             ->where('version', $version)
-            ->first();
+            ->first()) {
+            Redis::set("package.{$cachedPackage->name}.{$cachedPackage->version}", $cachedPackage);
+        }
+
+        return $cachedPackage;
     }
 
     /**
