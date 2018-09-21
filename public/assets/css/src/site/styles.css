@@ -259,7 +259,7 @@ a {
       .dependency-tree__items:first-child > .dependency-tree__item:first-child > .dependency-tree__package:before {
         display: none; }
     .dependency-tree__items--last:before {
-      top: calc(-100% + 12px); }
+      height: 46px; }
   .dependency-tree__item {
     padding: 0; }
   .dependency-tree__package {
