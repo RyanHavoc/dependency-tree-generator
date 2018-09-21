@@ -211,7 +211,13 @@ class DependencyTree
     public function getCachedPackage($name, $version)
     {
         if (Redis::exists("package.{$name}.{$version}")) {
-            return json_decode(Redis::get("package.{$name}.{$version}"));
+            $cachedPackage = Redis::get("package.{$name}.{$version}");
+            
+            if (!empty(json_decode($cachedPackage, true)['data'])) {
+                return json_decode($cachedPackage);
+            } else {
+                Redis::del("package.{$name}.{$version}");
+            }
         }
 
         if ($cachedPackage = Package::where('name', $name)
